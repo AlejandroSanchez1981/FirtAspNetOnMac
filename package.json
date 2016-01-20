@@ -1,0 +1,17 @@
+{
+  "name": "firtaspnet",
+  "version": "0.0.0",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "2.5.2",
+    "gulp-cssmin": "0.1.7",
+    "gulp-uglify": "1.2.0",
+    "rimraf": "2.2.8",
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
+    "Microsoft.Azure.Document": "1.0.0",
+    "commands": {
+     "web": "Microsoft.AspNet.Server.Kestrel",
+     "ef": "EntityFramework.Commands"
+   }
+  }
+}
