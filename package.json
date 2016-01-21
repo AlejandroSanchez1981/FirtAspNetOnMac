@@ -9,6 +9,7 @@
     "rimraf": "2.2.8",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
     "Microsoft.Azure.Document": "1.0.0",
+    "Newtonsoft.Json" : "2.0.2",
     "commands": {
      "web": "Microsoft.AspNet.Server.Kestrel",
      "ef": "EntityFramework.Commands"
