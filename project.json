@@ -29,7 +29,7 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "Microsoft.Azure.Documents.Client": "1.2.0",
+    "Microsoft.Azure.DocumentDB": "1.5.2",
     "Newtonsoft.Json" : "2.0.2"
   },
 
@@ -40,7 +40,16 @@
 
   "frameworks": {
     "dnx451": { },
-    "dnxcore50": { }
+    "dnxcore50": { 
+        "frameworkAssemblies": {
+			},
+			"dependencies": {
+				"System.Runtime": "4.0.21-beta*",
+				"System.Collections": "4.0.10-beta*",
+                "System.Linq": "4.0.1-beta-23516"
+                
+			}
+    }
   },
 
   "exclude": [

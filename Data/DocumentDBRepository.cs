@@ -4,10 +4,13 @@ using Microsoft.Azure.Documents.Linq;
 using System.Configuration;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace firstaspnet.Data
 {
-    public static class DocumentDBRepository<t>
+    public static class DocumentDBRepository<T>
     {
         //Use the Database if it exists, if not create a new Database
         private static Database ReadOrCreateDatabase()
