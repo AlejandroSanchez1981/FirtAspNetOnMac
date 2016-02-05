@@ -1,24 +1,27 @@
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity.EntityFramework;
+using firtaspnet.Data.Interface;
 
 namespace firtaspnet.Models
 {
-    public class Item
+    public class Item : IItemRepository
     {
-        [JsonProperty(PropertyName="id")]
-        public string Id { get; set; }
+        private readonly ApplicationDbContext _dbContext;
+        
+        public Item(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        
+        public IEnumerable<Item> ListAll()
+        {
+            return _dbContext.Item.AsEnumerable();
+        }
 
-        [JsonProperty(PropertyName="name")]
-        public string Name { get; set; }
-
-        [JsonProperty(PropertyName = "desc")]
-        public string Description { get; set; }
-
-        [JsonProperty(PropertyName="isComplete")]
-        public bool Completed { get; set; }    
+        public void Add(Item item)
+        {
+            _dbContext.Item.Add(item);
+            _dbContext.SaveChanges();
+        }
     }
 }

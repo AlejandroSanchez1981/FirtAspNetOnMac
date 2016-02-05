@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using firtaspnet.Models;
 using firtaspnet.Services;
+using firtaspnet.Data.Interface;
 
 namespace firtaspnet
 {
@@ -56,6 +57,7 @@ namespace firtaspnet
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddScoped<IItemRepository, Item>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
