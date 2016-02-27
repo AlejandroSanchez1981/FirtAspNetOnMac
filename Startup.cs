@@ -12,7 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using firtaspnet.Models;
 using firtaspnet.Services;
-using firtaspnet.Data.Interface;
+using firtaspnet.interfaces.ioc;
+using firtaspnet.Controllers;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 namespace firtaspnet
 {
@@ -40,6 +43,7 @@ namespace firtaspnet
         public IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        /*
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
@@ -57,8 +61,34 @@ namespace firtaspnet
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddScoped<IItemRepository, Item>();
+            
         }
+        */
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+        {
+            
+            // Add framework services.
+            services.AddEntityFramework()
+                .AddSqlite()
+                .AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlite(Configuration["Data:DefaultConnection:ConnectionString"]));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+                
+            services.AddMvc();
+            // add other framework services
+
+            // Add Autofac
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterModule<DefaultModule>();
+            containerBuilder.Populate(services);
+            var container = containerBuilder.Build();
+            return container.Resolve<IServiceProvider>();
+        }
+        
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

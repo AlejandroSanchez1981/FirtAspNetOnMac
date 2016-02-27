@@ -1,28 +1,29 @@
-using Microsoft.AspNet.Mvc;
-using firtaspnet.Data.Interface;
 using firtaspnet.Models;
-using System.Linq;
+using Microsoft.AspNet.Mvc;
 
 namespace firtaspnet.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly IItemRepository _itemRepository;
-        
-        public ItemController(IItemRepository itemRepository)
+        public interfaces.ioc.IRepository item;
+         
+        public ItemController(interfaces.ioc.IRepository item)
         {
-            _itemRepository = itemRepository;
+            this.item = item;
         }
         
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            var items = _itemRepository.ListAll();
-            if (!items.Any())
-            {
-                _itemRepository.Add(new Item("Hello Word!"));
-                items = _itemRepository.ListAll();
-            }
-            return View(items);
+            var model = item.GiveItem().ToItemModel();
+            return View(model);
         }
+        
     }
 }
+
+/*
+Multiple constructors accepting all given argument 
+types have been found in type 'firtaspnet.Controllers.ItemController'. 
+There should only be one applicable constructor.
+
+*/

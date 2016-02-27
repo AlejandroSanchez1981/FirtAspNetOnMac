@@ -29,8 +29,9 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "Microsoft.Azure.DocumentDB": "1.5.2"
-    
+    "Microsoft.Azure.DocumentDB": "1.5.2",
+    "Autofac": "4.0.0-rc1",
+    "Autofac.Extensions.DependencyInjection": "4.0.0-rc1"
   },
 
   "commands": {
