@@ -11,7 +11,7 @@ namespace firstaspnet.Data
 
         public Item GiveItem()
         {
-            return new Item {Name = "Alf" };
+            return new Item { Name = "AlfBOCA1905" };
         }
 
        
