@@ -1,11 +1,12 @@
 using System.Collections.Generic;
-using firstaspnet.Data;
+using firstaspnet.Data.Entities;
 
 namespace firtaspnet.interfaces.ioc
 {
-    public interface IRepository
+    public interface IRepository<T> where T : EntityBase
     {
-       Item GiveItem();
+       T GiveItem();
+       bool Save();
        
     }
 }

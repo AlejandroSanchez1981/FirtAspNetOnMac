@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 
-public interface IRepository<T> where T : EntityBase
+namespace firtaspnet.Data.DbContext.Json
 {
-    T GetById(int id);
-    IEnumerable<T> List();
-    void Add(T entity);
-    void Delete(T entity);
-    void Edit(T entity);
+    public interface IRepository<T> where T : firstaspnet.Data.Entities.EntityBase
+    {
+        T GetById(int id);
+        IEnumerable<T> List();
+        void Add(T entity);
+        void Delete(T entity);
+        void Edit(T entity);
+    }    
 }
 
-public abstract class EntityBase
-{
-   public int Id { get; protected set; }
-}
+

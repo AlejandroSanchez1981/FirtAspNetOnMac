@@ -1,13 +1,15 @@
+using firtaspnet.interfaces.ioc;
 using firtaspnet.Models;
 using Microsoft.AspNet.Mvc;
+using firstaspnet.Data.Entities;
 
 namespace firtaspnet.Controllers
 {
     public class ItemController : Controller
     {
-        public interfaces.ioc.IRepository item;
+        public IRepository<Item> item;
          
-        public ItemController(interfaces.ioc.IRepository item)
+        public ItemController(IRepository<Item> item)
         {
             this.item = item;
         }
@@ -25,5 +27,4 @@ namespace firtaspnet.Controllers
 Multiple constructors accepting all given argument 
 types have been found in type 'firtaspnet.Controllers.ItemController'. 
 There should only be one applicable constructor.
-
 */
