@@ -1,4 +1,4 @@
-using firtaspnet.Data.DbContext.Json;
+using firtaspnet.interfaces.ioc;
 
 namespace firstaspnet.Data.Entities
 {
@@ -7,14 +7,6 @@ namespace firstaspnet.Data.Entities
     // configuration database.
     public abstract class EntityBase 
     {
-        public IRepository<EntityBase> entity;
-        
-        public EntityBase(IRepository<EntityBase> entity)
-        {
-            this.entity = entity;
-        }
-        
-        
         public int Id { get; protected set; }
     }    
 }
