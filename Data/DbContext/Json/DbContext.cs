@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using firstaspnet.Data.Entities;
 using firtaspnet.Data.DbContext.Json;
 using Newtonsoft.Json;
@@ -25,6 +26,18 @@ public class DbContext<T> : IRepository<T> where T : EntityBase
 
     T IRepository<T>.GetById(int id)
     {
+        throw new NotImplementedException();
+    }
+
+    T IRepository<T>.GiveItem()
+    {
+        StringReader TheStream = new StringReader(conn);
+        using (StreamReader r = new StreamReader(TheStream))
+        {
+            string json = r.ReadToEnd();
+            List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+        }
+        
         throw new NotImplementedException();
     }
 

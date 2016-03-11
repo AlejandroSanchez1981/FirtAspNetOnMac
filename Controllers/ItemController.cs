@@ -1,7 +1,8 @@
 using firtaspnet.interfaces.ioc;
 using firtaspnet.Models;
 using Microsoft.AspNet.Mvc;
-using firstaspnet.Data.Entities;
+//using firstaspnet.Data.Entities;
+using firtaspnet.Data.DbContext.Json
 
 namespace firtaspnet.Controllers
 {
