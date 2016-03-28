@@ -4,6 +4,7 @@ using System.IO;
 using firstaspnet.Data.Entities;
 using firtaspnet.Data.DbContext.Json;
 using Newtonsoft.Json;
+
 public class DbContext<T> : IRepository<T> where T : EntityBase
 {
     private string conn = "/Users/damivazbien/asp5/firtaspnet/Data/db/json";
@@ -31,13 +32,6 @@ public class DbContext<T> : IRepository<T> where T : EntityBase
 
     T IRepository<T>.GiveItem()
     {
-        StringReader TheStream = new StringReader(conn);
-        using (StreamReader r = new StreamReader(TheStream))
-        {
-            string json = r.ReadToEnd();
-            List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
-        }
-        
         throw new NotImplementedException();
     }
 

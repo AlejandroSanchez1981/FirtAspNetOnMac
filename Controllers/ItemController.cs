@@ -1,8 +1,7 @@
 using firtaspnet.interfaces.ioc;
 using firtaspnet.Models;
 using Microsoft.AspNet.Mvc;
-//using firstaspnet.Data.Entities;
-using firtaspnet.Data.DbContext.Json
+using firstaspnet.Data.Entities;
 
 namespace firtaspnet.Controllers
 {
@@ -21,6 +20,14 @@ namespace firtaspnet.Controllers
             return View(model);
         }
         
+        public ActionResult Save()
+        {
+            //how save on file in azure from here;
+            
+            
+            return RedirectToAction("Index");
+            
+        }
     }
 }
 
