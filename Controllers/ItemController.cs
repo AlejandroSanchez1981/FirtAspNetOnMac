@@ -2,6 +2,11 @@ using firtaspnet.interfaces.ioc;
 using firtaspnet.Models;
 using Microsoft.AspNet.Mvc;
 using firstaspnet.Data.Entities;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using System.Configuration;
 
 namespace firtaspnet.Controllers
 {
@@ -23,7 +28,22 @@ namespace firtaspnet.Controllers
         public ActionResult Save()
         {
             //how save on file in azure from here;
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                "DefaultEndpointsProtocol=https;AccountName=sliderproductos;AccountKey=9Ai9hSGBcEwT6EMt14UbyiMcGYOPdj/7Oa2W6LZ+c8JDRmeq94pEWi/fz62Lx+bEENg0hyKMY+eufYkBXMDhvg==");
+                
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
             
+            // Retrieve a reference to a container.
+            CloudBlobContainer container = blobClient.GetContainerReference("finanzas");
+            
+            // Retrieve reference to a blob named "myblob".
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
+            
+            // Create or overwrite the "myblob" blob with contents from a local file.
+            using (var fileStream = System.IO.File.OpenRead(@"path\myfile.txt"))
+            {
+                blockBlob.UploadFromStream(fileStream);
+            }
             
             return RedirectToAction("Index");
             

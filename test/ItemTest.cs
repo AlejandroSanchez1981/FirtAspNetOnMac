@@ -1,13 +1,35 @@
 using Xunit;
 
-namespace firstaspnet.tes
+namespace firstaspnet.Test
 {
     public class ItemTest
     {
         [Fact]
-        public void WhenSaveItemThenSave()
+        public void WhenIfHaveSaveItemFileThenSave()
         {
-            Assert.Equal(250m, 250m);
+            /*
+               For month i generate a file with data, the my finanzas, then for save need have a file.
+            */
+           Assert.Equal(250m, 250m);
         }
+        
+        [Fact]
+        public void WhenIfNotHaveSaveItemFileThenNotSave()
+        {
+            /*
+               if FileNotFound then not save Data.
+            */
+           Assert.Equal(250m, 250m);
+        }
+        
+        [Fact]
+        public void WhenHaveFileForSaveAndHaveTheSameNameThenNotSave()
+        {
+            /*
+            */
+        }
+        
+        
+        
     }
 }

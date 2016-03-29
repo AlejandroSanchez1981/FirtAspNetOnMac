@@ -6,7 +6,6 @@ namespace firtaspnet.interfaces.ioc
     public interface IRepository<T> where T : class
     {
        T GiveItem();
-       bool Save();
-       
+       bool Save(StreamReader json);
     }
 }
