@@ -43,10 +43,18 @@ namespace firstaspnet.Test
         }
         
         [Fact]
-        public void WhenHaveFileForSaveAndHaveTheSameNameThenNotSave()
+        public void WhenSetDataWrongThenNotSave()
         {
-            /*
-            */
+            /*Sent data to save, but this not is a number, then error*/
+            var controller = new ItemController(new ItemContextMock());
+            IDictionary<string, StringValues> dictionary = 
+            new Dictionary<string, StringValues>();
+            
+            dictionary.Add("Debt", "asdf");
+            FormCollection collection = new FormCollection(dictionary);
+            var result = controller.Save(collection) as ViewResult;
+            
+            Assert.Equal("Index", result.ViewName);
         }
         
         
