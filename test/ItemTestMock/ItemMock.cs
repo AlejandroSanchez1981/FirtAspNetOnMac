@@ -1,16 +1,14 @@
-using firtaspnet.interfaces.ioc;
+using System;
+using firtaspnet.Interfaces.ioc;
 
 namespace firtaspnet.Test.ItemTestMock
 {
-    public class ItemTestMock : IRepository<Item>
+    public class ItemTestMock  
     {
-        private readOnly Func<StreamReader, bool> itemDelegate;
-        
-        public ItemTestMock(Func<StreamReader, bool> itemDelegate)
+        public bool Save()
         {
-            this.itemDelegate = itemDelegate;
+            throw new NotImplementedException();
         }
-        
-        
+
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using firtaspnet.Models;
 using firtaspnet.Services;
-using firtaspnet.interfaces.ioc;
+using firtaspnet.Interfaces.ioc;
 using firtaspnet.Controllers;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;

@@ -1,4 +1,4 @@
-using firtaspnet.interfaces.ioc;
+using firtaspnet.Interfaces.ioc;
 
 namespace firstaspnet.Data.Entities
 {

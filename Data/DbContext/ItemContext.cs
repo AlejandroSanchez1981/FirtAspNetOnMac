@@ -1,9 +1,10 @@
 using System;
+using firstaspnet.Data.Entities;
 using firtaspnet.Interfaces.ioc;
 
-namespace firstaspnet.Data.Entities
+namespace firstaspnet.Data.DbContext
 {
-    public class Item : EntityBase, IRepository<Item>
+    public class ItemContext : IRepository<Item>
     {
         public string Name {get; set;}
         

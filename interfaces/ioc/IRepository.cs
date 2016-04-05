@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using firstaspnet.Data.Entities;
 
-namespace firtaspnet.interfaces.ioc
+namespace firtaspnet.Interfaces.ioc
 {
     public interface IRepository<T> where T : class
     {
        T GiveItem();
-       bool Save(StreamReader json);
+       bool Save();
     }
 }
