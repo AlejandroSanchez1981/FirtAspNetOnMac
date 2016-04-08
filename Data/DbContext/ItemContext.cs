@@ -13,6 +13,11 @@ namespace firstaspnet.Data.DbContext
             return new Item { Name = "Alf" };
         }
 
+        public Item GiveMonthPrevius()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Save()
         {
             return true;

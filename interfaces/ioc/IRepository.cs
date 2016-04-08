@@ -7,5 +7,6 @@ namespace firtaspnet.Interfaces.ioc
     {
        T GiveItem();
        bool Save();
+       T GiveMonthPrevius();
     }
 }
