@@ -1,6 +1,11 @@
 using System;
+using System.Collections.Generic;
+using firstaspnet.Data.Entities;
+using firstaspnet.Entities;
+using firstaspnet.Models;
 using firstaspnet.Test.ContextMock;
 using firtaspnet.Controllers;
+using firtaspnet.Models;
 using Microsoft.AspNet.Mvc;
 using Xunit;
 
@@ -40,6 +45,49 @@ namespace firstaspnet.Test
             }
             
             Assert.Equal(true, result);
+        }
+        
+        
+        [Fact]
+        public void WhenWantSaveThenSubtotalAreEsqualsThanHisList()
+        {
+            var context = new MonthFinanceContextMock();
+            //create Model with properties.
+            var earningModel = new EarningModel {ListItemsEarningModel = new List<ItemModel>{
+                new ItemModel{Name = "Salary", HowMuch = 5000}
+            }};
+            
+            if(earningModel == null)
+             Assert.Equal(true,false);    
+            
+            var expenseModel = new ExpensesModel{ListItemsExpenseModel = new List<ItemModel>{
+              new ItemModel {Name = "Rent House Dublin", HowMuch = 2500}  
+            }};
+            
+            if(expenseModel == null)
+             Assert.Equal(true,false);
+             
+            var monthFinanceEntity = new MonthFinanceModel{
+                ExpenseModel = expenseModel,
+                EarningModel = earningModel,
+                Saving = 1000
+            };
+            
+            if(monthFinanceEntity == null)
+             Assert.Equal(true,false);
+            
+            var entity = monthFinanceEntity.ToModelToEntity();
+            
+            if(entity == null)
+             Assert.Equal(true,false);
+            
+            //pass model to ententy
+            //var result = context.Save(monthFinanceEntity.ToModelToEntity());
+            //save
+            var result = false;
+            
+            Assert.Equal(true,result);
+            
         }
         
         //if have previus moth load, show the new month with the data.

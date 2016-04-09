@@ -8,6 +8,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
 using Microsoft.AspNet.Http.Internal;
+using firstaspnet.Models;
 
 namespace firtaspnet.Controllers
 {

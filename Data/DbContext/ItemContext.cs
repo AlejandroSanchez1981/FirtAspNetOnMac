@@ -18,7 +18,7 @@ namespace firstaspnet.Data.DbContext
             throw new NotImplementedException();
         }
 
-        public bool Save()
+        public bool Save(Item entity)
         {
             return true;
         }

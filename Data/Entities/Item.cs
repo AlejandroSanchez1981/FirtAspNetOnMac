@@ -1,20 +1,33 @@
 using System;
+using firstaspnet.Models;
 using firtaspnet.Interfaces.ioc;
+using firtaspnet.Models;
 
 namespace firstaspnet.Data.Entities
 {
-    public class Item : EntityBase, IRepository<Item>
+    public class Item
     {
         public string Name {get; set;}
+        public double HowMuch { get; set; }
         
         public Item GiveItem()
         {
             return new Item { Name = "Alf" };
         }
 
-        public bool Save()
+       
+    }
+    
+    public static class ItemModelExtensions
+    {
+        public static Item ModelToEntity(this ItemModel model)
         {
-            return true;
+            var item = new Item{
+                Name = model.Name,
+                HowMuch = model.HowMuch
+            };
+     
+            return item;
         }
     }
 }

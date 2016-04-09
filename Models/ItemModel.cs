@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using firstaspnet.Data.Entities;
 
-namespace firtaspnet.Models
+namespace firstaspnet.Models
 {
     public class ItemModel 
     {
         public string Name {get; set;}
+        public double HowMuch { get; set; }
     }
     public static class ItemModelExtensions
     {
-        public static ItemModel ToItemModel(this Item source)
+        public static ItemModel ModelToEntity(this Item source)
         {
             if(source == null)
             {

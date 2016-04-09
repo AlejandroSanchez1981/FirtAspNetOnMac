@@ -1,6 +1,11 @@
-public class EarningModel
+using System.Collections.Generic;
+
+namespace firstaspnet.Models
 {
-    public double Salary { get; set; }
-    public double Others { get; set; }
+    public class EarningModel
+    {
+        public List<ItemModel> ListItemsEarningModel { get; set; }
+    }    
 }
+
 
