@@ -17,7 +17,7 @@ namespace firstaspnet.Entities
         {
             this.Name = name;
             this.MonthExpensive = monthExpensiveLast;
-            this.MonthEarning = MonthEarning;
+            this.MonthEarning = monthEarningLast;
             this.Saving = saving;
         }
 
@@ -32,6 +32,7 @@ namespace firstaspnet.Entities
         {
             if(model == null)
                 return null;
+                
             var monthFinance = new MonthFinance(
                model.Name,
                model.ExpenseModel.ToModelToEntity(),

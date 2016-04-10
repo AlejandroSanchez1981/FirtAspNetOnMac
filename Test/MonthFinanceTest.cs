@@ -49,7 +49,7 @@ namespace firstaspnet.Test
         
         
         [Fact]
-        public void WhenWantSaveThenSubtotalAreEsqualsThanHisList()
+        public void WhenWantSaveThenSubtotalAreEsqualsThatHisList()
         {
             var context = new MonthFinanceContextMock();
             //create Model with properties.
@@ -57,44 +57,27 @@ namespace firstaspnet.Test
                 new ItemModel{Name = "Salary", HowMuch = 5000}
             }};
             
-            if(earningModel == null)
-             Assert.Equal(true,false);    
-            
             var expenseModel = new ExpensesModel{ListItemsExpenseModel = new List<ItemModel>{
               new ItemModel {Name = "Rent House Dublin", HowMuch = 2500}  
             }};
             
-            if(expenseModel == null)
-             Assert.Equal(true,false);
-             
             var monthFinanceEntity = new MonthFinanceModel{
                 ExpenseModel = expenseModel,
                 EarningModel = earningModel,
                 Saving = 1000
             };
             
-            if(monthFinanceEntity == null)
-             Assert.Equal(true,false);
-            
             var entity = monthFinanceEntity.ToModelToEntity();
             
-            if(entity == null)
-             Assert.Equal(true,false);
-            
+            entity.SubTotalEarning = 5000;
+            entity.SubTotalExpense = 2500;
+           
             //pass model to ententy
-            //var result = context.Save(monthFinanceEntity.ToModelToEntity());
-            //save
-            var result = false;
+            var result = context.Save(entity);
             
             Assert.Equal(true,result);
-            
         }
         
-        //if have previus moth load, show the new month with the data.
-        [Fact]
-        public void WhenHaveMonthPreviusCopyAllTheDataInTheNewMonthThenOk()
-        {
-            var context = new MonthFinanceContextMock();
-        }
+        
     }
 }
