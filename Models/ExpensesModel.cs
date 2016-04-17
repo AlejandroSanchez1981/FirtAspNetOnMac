@@ -4,6 +4,10 @@ namespace firstaspnet.Models
 {
     public class ExpensesModel
     {
-    public List<ItemModel> ListItemsExpenseModel { get; set; }
+      public ExpensesModel()
+      {
+          ListItemsExpenseModel = new List<ItemModel>();
+      }
+      public List<ItemModel> ListItemsExpenseModel { get; set; }
     }    
 }

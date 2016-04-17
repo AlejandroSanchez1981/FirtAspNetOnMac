@@ -1,8 +1,9 @@
 
 namespace firstaspnet.Data.Db
 {
-    public class BlobAzureAccess : IStorageInitializer
+    public class BlobAzureAccess //: IStorageInitializer
     {
+        /*
         private readonly CloudStorageAccount account;
 		private readonly string documentsContainerName;
 
@@ -49,4 +50,6 @@ namespace firstaspnet.Data.Db
 		{
 		}
 	}
+*/
+    }    
 }

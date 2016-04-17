@@ -26,10 +26,10 @@ namespace firstaspnet.Data.Entities
         {
             double sumExpense = 0;
             
-            foreach (ItemModel item in model.ListItemsExpenseModel)
-            {
-                sumExpense += item.HowMuch;
-            }
+            //foreach (ItemModel item in model.ListItemsExpenseModel)
+            //{
+            //    sumExpense += item.HowMuch;
+            //}
             
             return sumExpense;
         } 

@@ -16,11 +16,22 @@ namespace firtaspnet.Controllers
             this.item = item;
         }
        
-        public ActionResult Index()
+        public ActionResult Create()
         {
             var model = new ItemModel();
+            //var itemChild = new ItemChildModel{ Name="Damian" };
+            //model.ListItemChildModel.Add(itemChild);
+            
+            return RedirectToAction("Index", model);
+        }
+       
+        public ActionResult Index()
+        {
+            // var model = new ItemModel();
+            // var itemChild = new ItemChildModel{ Name="Damian" };
+            // model.ListItemChildModel.Add(itemChild);
             //var model = item.GiveItem().ToItemModel();
-            return View(model);
+            return View();
         }
         
         public ActionResult Save(FormCollection form)
@@ -30,8 +41,6 @@ namespace firtaspnet.Controllers
            
              if(form["Name"] == "")
                 return View("Error");
-            
-            
             
             return View("Index");
         }

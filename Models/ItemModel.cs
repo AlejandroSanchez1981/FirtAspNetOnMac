@@ -6,8 +6,19 @@ namespace firstaspnet.Models
 {
     public class ItemModel 
     {
+        public ItemModel()
+        {
+           // this.ListItemChildModel = new List<ItemChildModel>();
+        }
         public string Name {get; set;}
         public double HowMuch { get; set; }
+        
+        //public List<ItemChildModel> ListItemChildModel {get; set;}
+    }
+    
+    public class ItemChildModel
+    {
+        public string Name { get; set; }
     }
     public static class ItemModelExtensions
     {

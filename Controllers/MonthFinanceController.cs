@@ -16,8 +16,8 @@ namespace firtaspnet.Controllers
         
         public bool Save(MonthFinanceModel model)
         {
-            if(!model.Name.Any())
-                return false;
+            //if(!model.Name.Any())
+            //    return false;
             
             return true;
         }
