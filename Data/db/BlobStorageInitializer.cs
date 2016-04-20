@@ -1,9 +1,13 @@
 
+using System;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+
 namespace firstaspnet.Data.Db
 {
-    public class BlobAzureAccess //: IStorageInitializer
+    public class BlobStorageInitializer : IStorageInitializer
     {
-        /*
+        
         private readonly CloudStorageAccount account;
 		private readonly string documentsContainerName;
 
@@ -41,15 +45,13 @@ namespace firstaspnet.Data.Db
 			CloudBlobContainer container = blobStorageType.GetContainerReference(documentsContainerName);
 			container.CreateIfNotExistsAsync(accessType, null, null);
 		}
-	}
-
-	public class DocumentStorageInitializer<TDocument> : BlobStorageInitializer where TDocument : class
-	{
-		public DocumentStorageInitializer(CloudStorageAccount account)
-			: base(account, typeof (TDocument).Name.ToLowerInvariant())
-		{
-		}
-	}
-*/
+	
+        public class DocumentStorageInitializer<TDocument> : BlobStorageInitializer where TDocument : class
+        {
+            public DocumentStorageInitializer(CloudStorageAccount account)
+                : base(account, typeof (TDocument).Name.ToLowerInvariant())
+            {
+            }
+        }
     }    
 }

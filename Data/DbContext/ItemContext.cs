@@ -1,6 +1,12 @@
 using System;
 using firstaspnet.Data.Entities;
 using firtaspnet.Interfaces.ioc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+
 
 namespace firstaspnet.Data.DbContext
 {
@@ -23,4 +29,7 @@ namespace firstaspnet.Data.DbContext
             return true;
         }
     }
+
 }
+
+
