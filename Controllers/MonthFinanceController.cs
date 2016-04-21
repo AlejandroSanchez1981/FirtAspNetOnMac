@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using firstaspnet.Data.DbContext;
 using firstaspnet.Data.DbContext.Interfaces;
 using firstaspnet.Models;
 using Microsoft.AspNet.Mvc;
@@ -10,9 +11,9 @@ namespace firtaspnet.Controllers
 {
     public class MonthFinanceController : Controller
     {
-        private readonly IMonthFinanceConfigurationsPersister monthFinanceConfPer;
+        private readonly IMonthFinanceConfigurationPersister monthFinanceConfPer;
         
-        public MonthFinanceController(IMonthFinanceConfigurationsPersister monthFinanceConfPer)
+        public MonthFinanceController(IMonthFinanceConfigurationPersister monthFinanceConfPer)
         {
             this.monthFinanceConfPer = monthFinanceConfPer;
         }

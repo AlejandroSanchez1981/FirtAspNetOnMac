@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using firstaspnet.Entities;
 
-namespace firstaspnet.Data.DbContext.Interfaces
+namespace firstaspnet.Data.DbContext.interfaces
 {
-	public interface IMonthFinanceConfigurationsPersister
+	public interface IMonthFinanceConfigurationPersister
 	{
 		Task<MonthFinance[]> Get(Guid userId);
 		Task Persist(Guid userId, IEnumerable<MonthFinance> dashboards);

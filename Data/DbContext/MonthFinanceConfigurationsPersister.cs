@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using firstasnet.Data.DbContext;
 using firstaspnet.Data.Db;
 using firstaspnet.Data.DbContext;
-using firstaspnet.Data.DbContext.Interfaces;
 using firstaspnet.Entities;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -15,6 +15,18 @@ namespace firstasp.Data.DbContext
     {
         private readonly MonthFinanceStore store;
 		private static string documentsContainerName = "usersdashboards";
+        
+        
+        private class MonthFinanceStore: BaseDocumentDao<IEnumerable<MonthFinance>>
+		{
+			public MonthFinanceStore(CloudStorageAccount account) : base(account) {}
+			protected override string DocumentsContainerName { get; } = documentsContainerName;
+			protected override void AdjustBlobAttributes(ICloudBlob blobReference)
+			{
+				var blobProperties = blobReference.Properties;
+				blobProperties.ContentType = "application/json";
+			}
+		}
         
         public MonthFinanceConfigurationsPersister(string connectionString)
 		{
@@ -47,10 +59,10 @@ namespace firstasp.Data.DbContext
 				{
 					monthFinance.Id = Guid.NewGuid();
 				}
-				foreach (var gadgetConfig in dashboard.Gadgets.Where(x => Guid.Empty.Equals(x.Id)))
-				{
-					gadgetConfig.Id = Guid.NewGuid();
-				}
+				// foreach (var gadgetConfig in dashboard.Gadgets.Where(x => Guid.Empty.Equals(x.Id)))
+				// {
+				// 	gadgetConfig.Id = Guid.NewGuid();
+				// }
 			}
 			if (mflist.Length > 0 && !mflist.Any(x => x.IsDefault))
 			{
@@ -66,7 +78,7 @@ namespace firstasp.Data.DbContext
 				return;
 			}
 			var stored = await store.Get(GetDocumentName(userId));
-			List<MonthFinance> monthFinanceList;
+			List<MonthFinance> monthFinanceList = new List<MonthFinance>();
 			if (stored == null)
 			{
 			//	dashboards = new List<MonthFinance>{ dashboard };
@@ -74,28 +86,28 @@ namespace firstasp.Data.DbContext
 			else
 			{
 				monthFinanceList = stored.ToList();
-				if (monthFinanceList.IsDefault)
-				{
-					foreach (var dashboardConfig in monthFinanceList)
-					{
-						dashboardConfig.IsDefault = false;
-					}
-				}
-				var existent = monthFinanceList.FirstOrDefault(x => x.Id == dashboard.Id);
+				// if (monthFinanceList.IsDefault)
+				// {
+				// 	foreach (var dashboardConfig in monthFinanceList)
+				// 	{
+				// 		dashboardConfig.IsDefault = false;
+				// 	}
+				// }
+				var existent = monthFinanceList.FirstOrDefault(x => x.Id == monthFinance.Id);
 				if (existent != null)
 				{
 					monthFinanceList.Remove(existent);
 				}
-				monthFinanceList.Add(dashboard);
+				monthFinanceList.Add(monthFinance);
 				if (monthFinanceList.Count == 1)
 				{
-					monthFinanceList.IsDefault = true;
+					// monthFinanceList.IsDefault = true;
 				}
 			}
 			await Persist(userId, monthFinanceList);
 		}
 
-		public async Task<MonthFinance[]> Remove(Guid userId, Guid monthFinancedId)
+		public async Task<MonthFinance[]> Remove(Guid userId, Guid monthFinanceId)
 		{
 			var stored = await store.Get(GetDocumentName(userId));
 			if (stored == null)
@@ -108,15 +120,6 @@ namespace firstasp.Data.DbContext
 		}
         
         
-        private class MonthFinanceStore: BaseDocumentDao<IEnumerable<MonthFinance>>
-		{
-			public MonthFinanceStore(CloudStorageAccount account) : base(account) {}
-			protected override string DocumentsContainerName { get; } = documentsContainerName;
-			protected override void AdjustBlobAttributes(ICloudBlob blobReference)
-			{
-				var blobProperties = blobReference.Properties;
-				blobProperties.ContentType = "application/json";
-			}
-		}
+        
     }
 }

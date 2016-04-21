@@ -1,3 +1,4 @@
+using System;
 using firtaspnet.Interfaces.ioc;
 
 namespace firstaspnet.Data.Entities
@@ -7,6 +8,6 @@ namespace firstaspnet.Data.Entities
     // configuration database.
     public abstract class EntityBase 
     {
-        public int Id { get; protected set; }
+        public Guid Id { get; set; }
     }    
 }

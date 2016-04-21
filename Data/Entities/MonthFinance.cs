@@ -3,8 +3,10 @@ using firstaspnet.Models;
 
 namespace firstaspnet.Entities
 {
-    public class MonthFinance
+    public class MonthFinance : EntityBase
     {
+        internal bool IsDefault;
+
         public string Name { get; set; }
         public Expense MonthExpensive { get; set; }
         public Earning MonthEarning { get; set; }
