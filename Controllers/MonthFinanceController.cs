@@ -11,9 +11,9 @@ namespace firtaspnet.Controllers
 {
     public class MonthFinanceController : Controller
     {
-        private readonly IMonthFinanceConfigurationPersister monthFinanceConfPer;
+        private readonly IFinanceConfigurationPersister monthFinanceConfPer;
         
-        public MonthFinanceController(IMonthFinanceConfigurationPersister monthFinanceConfPer)
+        public MonthFinanceController(IFinanceConfigurationPersister monthFinanceConfPer)
         {
             this.monthFinanceConfPer = monthFinanceConfPer;
         }

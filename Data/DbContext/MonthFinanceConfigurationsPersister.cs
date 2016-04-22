@@ -4,14 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using firstasnet.Data.DbContext;
 using firstaspnet.Data.Db;
-using firstaspnet.Data.DbContext;
 using firstaspnet.Entities;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace firstasp.Data.DbContext
+namespace firstaspnet.Data.DbContext
 {
-    public class MonthFinanceConfigurationsPersister : IMonthFinanceConfigurationPersister
+    public class MonthFinanceConfigurationsPersister : IFinanceConfigurationPersister
     {
         private readonly MonthFinanceStore store;
 		private static string documentsContainerName = "usersdashboards";
