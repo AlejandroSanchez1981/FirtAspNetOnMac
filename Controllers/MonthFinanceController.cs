@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using firstaspnet.Data.DbContext;
 using firstaspnet.Data.DbContext.Interfaces;
+using firstaspnet.Entities;
 using firstaspnet.Models;
 using Microsoft.AspNet.Mvc;
 
@@ -25,8 +26,11 @@ namespace firtaspnet.Controllers
         
         public bool Save(MonthFinanceModel model)
         {
-            //if(!model.Name.Any())
-            //    return false;
+            var monthFinance = new MonthFinance{
+                Name = "Abril 2016"
+            };
+            
+            monthFinanceConfPer.Persist(monthFinance);
             
             return true;
         }

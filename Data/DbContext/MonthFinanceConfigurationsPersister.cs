@@ -12,9 +12,9 @@ namespace firstaspnet.Data.DbContext
 {
     public class MonthFinanceConfigurationsPersister : IFinanceConfigurationPersister
     {
+        public static string userId = "42fe5e7f-b378-469d-87e8-cc74420b096a";
         private readonly MonthFinanceStore store;
-		private static string documentsContainerName = "usersdashboards";
-        
+		private static string documentsContainerName = "usersfinances";
         
         private class MonthFinanceStore: BaseDocumentDao<IEnumerable<MonthFinance>>
 		{
@@ -34,64 +34,39 @@ namespace firstaspnet.Data.DbContext
 			store = new MonthFinanceStore(account); 
 		}
 
-		public async Task<MonthFinance[]> Get(Guid userId)
+		public async Task<MonthFinance[]> Get()
 		{
-			var documentName = GetDocumentName(userId);
+			var documentName = GetDocumentName();
 			return (await store.Get(documentName))?.ToArray() ?? new MonthFinance[0];
 		}
 
-		private static string GetDocumentName(Guid userId)
+		private static string GetDocumentName()
 		{
-			return userId.ToString("N").ToLowerInvariant() + "/" + "config.json";
+			return userId.ToString().ToLowerInvariant() + "/" + "config.json";
 		}
 
-		public async Task Persist(Guid userId, IEnumerable<MonthFinance> monthFinances)
-		{
-			if (monthFinances == null)
-			{
-				monthFinances = Enumerable.Empty<MonthFinance>();
-			}
-			var mflist = monthFinances.ToArray();
-			foreach (var monthFinance in mflist)
-			{
-				if (Guid.Empty.Equals(monthFinance.Id))
-				{
-					monthFinance.Id = Guid.NewGuid();
-				}
-				// foreach (var gadgetConfig in dashboard.Gadgets.Where(x => Guid.Empty.Equals(x.Id)))
-				// {
-				// 	gadgetConfig.Id = Guid.NewGuid();
-				// }
-			}
-			if (mflist.Length > 0 && !mflist.Any(x => x.IsDefault))
-			{
-				mflist[0].IsDefault = true;
-			}
-			await store.Persist(GetDocumentName(userId), mflist);
-		}
-
-		public async Task Persist(Guid userId, MonthFinance monthFinance)
+		public async Task Persist(MonthFinance monthFinance)
 		{
 			if (monthFinance == null)
 			{
 				return;
 			}
-			var stored = await store.Get(GetDocumentName(userId));
+			var stored = await store.Get(GetDocumentName());
 			List<MonthFinance> monthFinanceList = new List<MonthFinance>();
 			if (stored == null)
 			{
-			//	dashboards = new List<MonthFinance>{ dashboard };
+				monthFinanceList = new List<MonthFinance>{ monthFinance };
 			}
 			else
 			{
 				monthFinanceList = stored.ToList();
-				// if (monthFinanceList.IsDefault)
-				// {
-				// 	foreach (var dashboardConfig in monthFinanceList)
-				// 	{
-				// 		dashboardConfig.IsDefault = false;
-				// 	}
-				// }
+				if (monthFinance.IsDefault)
+				{
+				 	foreach (var monthFInanceConfig in monthFinanceList)
+				 	{
+				 		monthFInanceConfig.IsDefault = false;
+				 	}
+				}
 				var existent = monthFinanceList.FirstOrDefault(x => x.Id == monthFinance.Id);
 				if (existent != null)
 				{
@@ -100,25 +75,45 @@ namespace firstaspnet.Data.DbContext
 				monthFinanceList.Add(monthFinance);
 				if (monthFinanceList.Count == 1)
 				{
-					// monthFinanceList.IsDefault = true;
+					monthFinance.IsDefault = true;
 				}
 			}
-			await Persist(userId, monthFinanceList);
+			await Persist(monthFinanceList);
+		}
+        
+        public async Task Persist(IEnumerable<MonthFinance> monthFinances)
+		{
+			if (monthFinances == null)
+			{
+				monthFinances = Enumerable.Empty<MonthFinance>();
+			}
+			var dblist = monthFinances.ToArray();
+			foreach (var monthFin in dblist)
+			{
+				if (Guid.Empty.Equals(monthFin.Id))
+				{
+					monthFin.Id = Guid.NewGuid();
+				}
+			}
+			if (dblist.Length > 0 && !dblist.Any(x => x.IsDefault))
+			{
+				dblist[0].IsDefault = true;
+			}
+			await store.Persist(GetDocumentName(), dblist);
 		}
 
-		public async Task<MonthFinance[]> Remove(Guid userId, Guid monthFinanceId)
+		public async Task<MonthFinance[]> Remove(Guid monthFinanceId)
 		{
-			var stored = await store.Get(GetDocumentName(userId));
+			var stored = await store.Get(GetDocumentName());
 			if (stored == null)
 			{
 				return new MonthFinance[0];
 			}
 			var dashboards = stored.Where(x => x.Id != monthFinanceId).ToArray();
-			await Persist(userId, dashboards);
+			await Persist(dashboards);
 			return dashboards;
 		}
-        
-        
-        
+
+    
     }
 }

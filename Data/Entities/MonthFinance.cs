@@ -5,8 +5,10 @@ namespace firstaspnet.Entities
 {
     public class MonthFinance : EntityBase
     {
+        public MonthFinance()
+        {
+        }
         internal bool IsDefault;
-
         public string Name { get; set; }
         public Expense MonthExpensive { get; set; }
         public Earning MonthEarning { get; set; }
@@ -22,11 +24,8 @@ namespace firstaspnet.Entities
             this.MonthEarning = monthEarningLast;
             this.Saving = saving;
         }
-
-        public MonthFinance()
-        {
-        }
     }
+    
     
     public static class MonthFinanceModelExtensions
     {

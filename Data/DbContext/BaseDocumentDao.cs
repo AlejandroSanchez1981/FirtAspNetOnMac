@@ -18,6 +18,10 @@ namespace firstasnet.Data.DbContext
 		public BaseDocumentDao(CloudStorageAccount account)
 			: this(account, new JsonDocumentSerializer<TDocument>())
 		{ }
+        
+        protected CloudStorageAccount Account { get; }
+
+		protected virtual string DocumentsContainerName { get; }
 
 		public BaseDocumentDao(CloudStorageAccount account, IDocumentSerializer<TDocument> documentSerializer)
 		{
@@ -34,10 +38,7 @@ namespace firstasnet.Data.DbContext
 			this.documentSerializer = documentSerializer;
 		}
 
-		protected CloudStorageAccount Account { get; }
-
-		protected virtual string DocumentsContainerName { get; }
-
+		
 		public async Task<TDocument> Get(string documentName)
 		{
 			var blobStorageType = Account.CreateCloudBlobClient();

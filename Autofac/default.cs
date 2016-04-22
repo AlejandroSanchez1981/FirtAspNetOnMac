@@ -3,6 +3,7 @@ using firstaspnet.Data.DbContext;
 using firstaspnet.Data.Entities;
 using firtaspnet.Interfaces.ioc;
 
+
 public class DefaultModule : Module
 {
   protected override void Load(ContainerBuilder builder)
@@ -10,6 +11,6 @@ public class DefaultModule : Module
     builder.RegisterType<ItemContext>().As<IRepository<Item>>();
     builder.RegisterType<MonthFinanceConfigurationsPersister>().As<IFinanceConfigurationPersister>();
     
-    builder.Register(c => new MonthFinanceConfigurationsPersister("mysection")).As<IFinanceConfigurationPersister>();
+    builder.Register(c => new MonthFinanceConfigurationsPersister("")).As<IFinanceConfigurationPersister>();
   }
 }
