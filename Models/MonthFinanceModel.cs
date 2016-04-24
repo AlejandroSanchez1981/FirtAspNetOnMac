@@ -21,7 +21,8 @@ namespace firstaspnet.Models
         public static MonthFinanceModel ToMonthFinanceModel(this MonthFinance monthFinance)
         {
             var monthFinanceModel = new MonthFinanceModel {
-                Name = monthFinance.Name
+                Name = monthFinance.Name,
+                Saving = monthFinance.Saving
             };
             return monthFinanceModel;
         }

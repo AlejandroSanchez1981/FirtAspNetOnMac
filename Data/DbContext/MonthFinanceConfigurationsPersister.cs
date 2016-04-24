@@ -14,7 +14,7 @@ namespace firstaspnet.Data.DbContext
     {
         public static string userId = "42fe5e7f-b378-469d-87e8-cc74420b096a";
         private readonly MonthFinanceStore store;
-		private static string documentsContainerName = "usersfinances";
+		private static string documentsContainerName = "finances";
         
         private class MonthFinanceStore: BaseDocumentDao<IEnumerable<MonthFinance>>
 		{
@@ -39,6 +39,12 @@ namespace firstaspnet.Data.DbContext
 			var documentName = GetDocumentName();
 			return (await store.Get(documentName))?.ToArray() ?? new MonthFinance[0];
 		}
+        
+        // public async Task<List<MonthFinance>> Get()
+		// {
+		// 	var documentName = GetDocumentName();
+		// 	return (await store.Get(documentName))?.ToList() ?? new List<MonthFinance>();
+		// }
 
 		private static string GetDocumentName()
 		{
