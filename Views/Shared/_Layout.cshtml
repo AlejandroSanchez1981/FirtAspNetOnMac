@@ -16,7 +16,19 @@
             <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         </environment>
     </head>
-    <body>
+    <style>
+        body {
+            background: url("images/zermat.jpg");
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: fixed;
+            background-size: cover;
+            transition: 1s opacity;
+        }
+    </style>
+    <body class="img_responsive">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">

@@ -11,6 +11,8 @@ public class DefaultModule : Module
     builder.RegisterType<ItemContext>().As<IRepository<Item>>();
     builder.RegisterType<MonthFinanceConfigurationsPersister>().As<IFinanceConfigurationPersister>();
     
-    builder.Register(c => new MonthFinanceConfigurationsPersister("")).As<IFinanceConfigurationPersister>();
+    builder.Register(c => new MonthFinanceConfigurationsPersister("DefaultEndpointsProtocol=https;AccountName=monthfinance;AccountKey=NQxNgN/+tChgaIPhbQXOFDH3nmmGbnixBE4L63mt+H61fkKG3fKDIsA6wTuzbg1T8FyurdwCH4tVaiWOUgkY0Q==")).As<IFinanceConfigurationPersister>();
   }
 }
+
+                                                                                                                                      
