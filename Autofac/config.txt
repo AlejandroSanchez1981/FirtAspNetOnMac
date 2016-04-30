@@ -1,0 +1,1 @@
+"DefaultEndpointsProtocol=https;AccountName=monthfinance;AccountKey=NQxNgN/+tChgaIPhbQXOFDH3nmmGbnixBE4L63mt+H61fkKG3fKDIsA6wTuzbg1T8FyurdwCH4tVaiWOUgkY0Q=="
