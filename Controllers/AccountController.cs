@@ -9,11 +9,11 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
-using firtaspnet.Models;
-using firtaspnet.Services;
-using firtaspnet.ViewModels.Account;
+using firstaspnet.Models;
+using firstaspnet.Services;
+using firstaspnet.ViewModels.Account;
 
-namespace firtaspnet.Controllers
+namespace firstaspnet.Controllers
 {
     [Authorize]
     public class AccountController : Controller

@@ -1,6 +1,6 @@
 using System;
 using firstaspnet.Data.Entities;
-using firtaspnet.Interfaces.ioc;
+using firstaspnet.Interfaces.ioc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

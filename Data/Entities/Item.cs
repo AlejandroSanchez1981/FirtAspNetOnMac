@@ -1,7 +1,7 @@
 using System;
 using firstaspnet.Models;
-using firtaspnet.Interfaces.ioc;
-using firtaspnet.Models;
+using firstaspnet.Interfaces.ioc;
+using firstaspnet.Models;
 
 namespace firstaspnet.Data.Entities
 {

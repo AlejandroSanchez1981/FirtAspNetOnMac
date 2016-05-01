@@ -1,7 +1,7 @@
 using Autofac;
 using firstaspnet.Data.DbContext;
 using firstaspnet.Data.Entities;
-using firtaspnet.Interfaces.ioc;
+using firstaspnet.Interfaces.ioc;
 
 
 public class DefaultModule : Module

@@ -1,5 +1,5 @@
 using System;
-using firtaspnet.Interfaces.ioc;
+using firstaspnet.Interfaces.ioc;
 
 namespace firstaspnet.Data.Entities
 {

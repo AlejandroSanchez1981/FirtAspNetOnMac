@@ -1,11 +1,11 @@
 {
   "version": "1.0.0-*",
-  "userSecretsId": "aspnet5-firtaspnet-cae95aeb-ebae-4643-987c-37b3b084f1c4",
+  "userSecretsId": "aspnet5-firstaspnet-cae95aeb-ebae-4643-987c-37b3b084f1c4",
   "compilationOptions": {
     "emitEntryPoint": true
   },
   "tooling": {
-    "defaultNamespace": "firtaspnet"
+    "defaultNamespace": "firstaspnet"
   },
 
   "dependencies": {

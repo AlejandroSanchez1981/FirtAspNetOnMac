@@ -1,4 +1,4 @@
-namespace firtaspnet.Interfaces.ioc
+namespace firstaspnet.Interfaces.ioc
 {
     public interface IRepository<T> where T : class
     {

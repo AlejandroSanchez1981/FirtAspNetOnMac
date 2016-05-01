@@ -7,11 +7,11 @@ using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
-using firtaspnet.Models;
-using firtaspnet.Services;
-using firtaspnet.ViewModels.Manage;
+using firstaspnet.Models;
+using firstaspnet.Services;
+using firstaspnet.ViewModels.Manage;
 
-namespace firtaspnet.Controllers
+namespace firstaspnet.Controllers
 {
     [Authorize]
     public class ManageController : Controller

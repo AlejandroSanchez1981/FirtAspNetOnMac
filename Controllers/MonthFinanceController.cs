@@ -8,7 +8,7 @@ using firstaspnet.Entities;
 using firstaspnet.Models;
 using Microsoft.AspNet.Mvc;
 
-namespace firtaspnet.Controllers
+namespace firstaspnet.Controllers
 {
     public class MonthFinanceController : Controller
     {

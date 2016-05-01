@@ -10,14 +10,14 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using firtaspnet.Models;
-using firtaspnet.Services;
-using firtaspnet.Interfaces.ioc;
-using firtaspnet.Controllers;
+using firstaspnet.Models;
+using firstaspnet.Services;
+using firstaspnet.Interfaces.ioc;
+using firstaspnet.Controllers;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 
-namespace firtaspnet
+namespace firstaspnet
 {
     public class Startup
     {
@@ -36,7 +36,7 @@ namespace firtaspnet
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-            Configuration["Data:DefaultConnection:ConnectionString"] = $@"Data Source={appEnv.ApplicationBasePath}/firtaspnet.db";
+            Configuration["Data:DefaultConnection:ConnectionString"] = $@"Data Source={appEnv.ApplicationBasePath}/firstaspnet.db";
 
         }
 

@@ -1,11 +1,11 @@
-using firtaspnet.Interfaces.ioc;
-using firtaspnet.Models;
+using firstaspnet.Interfaces.ioc;
+using firstaspnet.Models;
 using Microsoft.AspNet.Mvc;
 using firstaspnet.Data.Entities;
 using Microsoft.AspNet.Http.Internal;
 using firstaspnet.Models;
 
-namespace firtaspnet.Controllers
+namespace firstaspnet.Controllers
 {
     public class ItemController : Controller
     {
@@ -49,6 +49,6 @@ namespace firtaspnet.Controllers
 
 /*
 Multiple constructors accepting all given argument 
-types have been found in type 'firtaspnet.Controllers.ItemController'. 
+types have been found in type 'firstaspnet.Controllers.ItemController'. 
 There should only be one applicable constructor.
 */

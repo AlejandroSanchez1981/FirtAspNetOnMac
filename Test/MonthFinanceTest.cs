@@ -4,8 +4,8 @@ using firstaspnet.Data.Entities;
 using firstaspnet.Entities;
 using firstaspnet.Models;
 using firstaspnet.Test.ContextMock;
-using firtaspnet.Controllers;
-using firtaspnet.Models;
+using firstaspnet.Controllers;
+using firstaspnet.Models;
 using Microsoft.AspNet.Mvc;
 using Xunit;
 

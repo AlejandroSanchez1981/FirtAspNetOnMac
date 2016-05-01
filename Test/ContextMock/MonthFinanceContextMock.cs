@@ -1,7 +1,7 @@
 using System;
 using firstaspnet.Entities;
 using firstaspnet.Models;
-using firtaspnet.Interfaces.ioc;
+using firstaspnet.Interfaces.ioc;
 
 namespace firstaspnet.Test.ContextMock
 {
