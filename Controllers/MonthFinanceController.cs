@@ -21,8 +21,6 @@ namespace firstaspnet.Controllers
         
         public ActionResult Index()
         {
-            throw new System.ArgumentException("Parameter cannot be null", "original");
-            
             return View("Index");
         }
         
