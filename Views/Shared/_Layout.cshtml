@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="" ng-app="todoApp">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,7 +50,14 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js"></script>
+            
+            
+        </environment>
+        <div  class="container body-content">
             @RenderBody()
             <hr />
             <footer>
@@ -58,11 +65,7 @@
             </footer>
         </div>
 
-        <environment names="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js"></script>
-        </environment>
+        
         <environment names="Staging,Production">
             <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
                     asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -73,6 +76,10 @@
                     asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
             </script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
+            <script src="~/js/Angular/finance.js"></script>
         </environment>
 
         @RenderSection("scripts", required: false)
