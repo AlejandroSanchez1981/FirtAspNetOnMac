@@ -1,14 +1,44 @@
 <div class="row">
-  <div class="col-md-4">INGRESOS</div>
-  <div class="col-md-4">GASTOS</div>
-  <div class="col-md-4">INVERSIONES</div>
-</div>
+  <div class="col-md-4 col-xs-12">
+    <div class="panel panel-primary">
+    <div class="panel-heading">Ingresos</div>
+      <div class="panel-body">
+      This page is temporarily disabled by the site administrator for some reason.<br> 
+      <a href="#">Click here</a> to enable the page.
+      </div>
+    </div>  
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">Egresos</div>
+      <div class="panel-body">
+        This page is temporarily disabled by the site administrator for some reason.<br> 
+        <a href="#">Click here</a> to enable the page.
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-4 col-xs-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Inversiones</div>
+      <div class="panel-body">
+        This page is temporarily disabled by the site administrator for some reason.<br> 
+        <a href="#">Click here</a> to enable the page.
+      </div>
+    </div>
+    </div>  
+  </div>
+  
 <div class="row" ng-controller="LineCtrl">
-  <canvas id="line" class="chart chart-line" chart-data="data"
+  <div class="panel">
+    <div class="panel-body">
+      <canvas id="line" class="chart chart-line" chart-data="data"
         chart-labels="labels" chart-legend="true" chart-series="series"
         chart-click="onClick">
-  </canvas> 
- </div>
+      </canvas>    
+    </div>
+  </div>
+</div>
+
 @section scripts{
   <script>
     angular.module("app", ["chart.js"]).controller("LineCtrl", function ($scope) {
