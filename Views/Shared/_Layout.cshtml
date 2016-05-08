@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="" ng-app="todoApp">
+<html lang="" ng-app="app">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - firtaspnet</title>
+        <title>@ViewData["Title"] - firstaspnet</title>
 
         <environment names="Development">
             <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -14,40 +14,26 @@
                   asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
                   asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
             <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+            
+            <link rel="stylesheet" href="~/lib/angular-chart.js/dist/angular-chart.css">
         </environment>
     </head>
     <style>
         body {
-            background: url("images/zermat.jpg");
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            position: fixed;
-            background-size: cover;
-            transition: 1s opacity;
-        }
+            height:100%;
+            width:100%;
+            background-color: #7ea7d8;
+            background-color: #5b9c64;
+            font-family: arial, sans-serif;
+            }
     </style>
     <body class="img_responsive">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">firtaspnet</a>
+                    Firtaspnet
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
+                
             </div>
         </div>
         <environment names="Development">
@@ -61,7 +47,6 @@
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; 2015 - firtaspnet</p>
             </footer>
         </div>
 
@@ -79,7 +64,9 @@
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
-            <script src="~/js/Angular/finance.js"></script>
+            <!--<script src="~/js/Angular/finance.js"></script>-->
+            <script src="~/lib/chart.js/chart.js"></script>
+            <script src="~/lib/angular-chart.js/dist/angular-chart.js"></script>
         </environment>
 
         @RenderSection("scripts", required: false)

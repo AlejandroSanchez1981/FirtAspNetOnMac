@@ -1,4 +1,35 @@
-<div ng-controller="TodoListController as todoList">
+<div class="row">
+  <div class="col-md-4">INGRESOS</div>
+  <div class="col-md-4">GASTOS</div>
+  <div class="col-md-4">INVERSIONES</div>
+</div>
+<div class="row" ng-controller="LineCtrl">
+  <canvas id="line" class="chart chart-line" chart-data="data"
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick">
+  </canvas> 
+ </div>
+@section scripts{
+  <script>
+    angular.module("app", ["chart.js"]).controller("LineCtrl", function ($scope) {
+
+        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+        $scope.series = ['Ingresos', 'Gastos', 'Inversiones'];
+        $scope.data = [
+          [13000, 13000, 20000, 18000, 22000, 13000, 13000],
+          [3000, 3000, 3000, 9000, 3000, 5000, 7000],
+          [3000, 5000, 8000, 12000, 16000, 18000, 12000]
+        ];
+        $scope.onClick = function (points, evt) {
+          console.log(points, evt);
+        };
+      });
+  </script>
+  
+}
+
+
+<!--<div ng-controller="TodoListController as todoList">
       <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
       [ <a href="" ng-click="todoList.archive()">archive</a> ]
       <ul class="unstyled">
@@ -14,4 +45,4 @@
                placeholder="add new todo here">
         <input class="btn-primary" type="submit" value="add">
       </form>
-    </div>
+    </div>-->
