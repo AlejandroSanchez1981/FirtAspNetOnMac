@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - firstaspnet</title>
+        <title>@ViewData["Title"] - Financial times</title>
 
         <environment names="Development">
             <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -19,7 +19,7 @@
         </environment>
     </head>
     <style>
-        body {
+       body {
             height:100%;
             width:100%;
             background-color: #7ea7d8;
@@ -31,9 +31,13 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    Firtaspnet
+                    <a asp-controller="MonthFinance" asp-action="Index" class="navbar-brand">Financial times</a>
                 </div>
-                
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation"><a href="#">Messages <span class="badge">3</span></a>
+                    </ul>
+                </div>
             </div>
         </div>
         <environment names="Development">
