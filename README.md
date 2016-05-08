@@ -1,8 +1,8 @@
 # Welcome to Finances time - First net core app on Mac
 
-This is a litlle web app, build with asp net 5 on Mac.
+This is a little web app, done with asp net 5 on Mac os.
 
-The function of app let have a better control of your personal economy. You can see your Earning, Debts and Inversitions for month, and view the evolution in a graph.
+The function of app is let have a better control of your personal economy. You can see your Earnings, Debts and investments for month and view the evolution in a fantastic graph.
 
 ### Tegnology usage:
 * [Visual studio code](https://code.visualstudio.com/) 
