@@ -24,6 +24,15 @@ namespace firstaspnet.Controllers
             return View("Index");
         }
         
+        // GET: api/values
+        [HttpGet]
+        public IEnumerable<ItemModel> GetEarning()
+        {
+             return new List<ItemModel>{
+                new ItemModel{Name = "Salary", HowMuch = 5000}
+            };
+        }
+        
         public async Task<ActionResult> GetDocument()
         {
             

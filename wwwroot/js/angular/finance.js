@@ -1,28 +1,32 @@
-angular.module('todoApp', [])
-  .controller('TodoListController', function() {
-    var todoList = this;
-    todoList.todos = [
-      {text:'learn angular', done:true},
-      {text:'build an angular app', done:false}];
+(function () {
+    'use strict'; 
  
-    todoList.addTodo = function() {
-      todoList.todos.push({text:todoList.todoText, done:false});
-      todoList.todoText = '';
-    };
+    config.$inject = ['$routeProvider', '$locationProvider']; 
  
-    todoList.remaining = function() {
-      var count = 0;
-      angular.forEach(todoList.todos, function(todo) {
-        count += todo.done ? 0 : 1;
-      });
-      return count;
-    };
+    angular.module('moviesApp', [
+        'ngRoute', 'moviesServices'
+    ]).config(config);
  
-    todoList.archive = function() {
-      var oldTodos = todoList.todos;
-      todoList.todos = [];
-      angular.forEach(oldTodos, function(todo) {
-        if (!todo.done) todoList.todos.push(todo);
-      });
-    };
-  });
+    function config($routeProvider, $locationProvider) {
+        $routeProvider
+            .when('/', {
+              templateUrl: '/Views/list.html',
+              controller: 'MoviesListController'
+            })
+            .when('/movies/add', {
+                templateUrl: '/Views/add.html',
+                controller: 'MoviesAddController'
+            })
+            .when('/movies/edit/:id', {
+                templateUrl: '/Views/edit.html',
+                controller: 'MoviesEditController'
+            })
+            .when('/movies/delete/:id', {
+                templateUrl: '/Views/delete.html',
+                controller: 'MoviesDeleteController'
+            });
+ 
+        $locationProvider.html5Mode(true); 
+    }
+ 
+})();
