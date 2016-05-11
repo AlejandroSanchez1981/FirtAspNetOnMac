@@ -1,3 +1,4 @@
+@model firstaspnet.Models.EarningModel
 <div class="row">
   @using (Html.BeginForm("Save", "MonthFinance", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
   {
@@ -42,7 +43,7 @@
     </div>            
   }
 </div>
-<!--<div class="row" ng-controller="LineCtrl">
+<div class="row" ng-controller="LineCtrl">
   <div class="panel">
     <div class="panel-body">
       <canvas id="line" class="chart chart-line" chart-data="data"
@@ -50,7 +51,7 @@
         chart-click="onClick">
       </canvas>    
     </div>
-  </div>-->
+  </div>
 </div>
 
 @section scripts{
@@ -58,67 +59,33 @@
      (function () 
      {
        
-      //   angular.module("app", ["chart.js"]).controller("LineCtrl", function ($scope) {
-
-      //   $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-      //   $scope.series = ['Ingresos', 'Gastos', 'Inversiones'];
-      //   $scope.data = [
-      //     [13000, 13000, 20000, 18000, 22000, 13000, 13000],
-      //     [3000, 3000, 3000, 9000, 3000, 5000, 7000],
-      //     [3000, 5000, 8000, 12000, 16000, 18000, 12000]
-      //   ];
-      //   $scope.onClick = function (points, evt) {
-      //     console.log(points, evt);
-      //   };
-      // });
-      
-        var app = angular.module('app', ['ngRoute']);
+        var app = angular.module('app', ['ngRoute','chart.js']);
         var earningServices = angular.module('earningServices', ['ngResource']);
  
-        earningServices.factory('Earnings', ['$resource',
-          function ($resource) {
-              return $resource('/MonthFinance/GetEarning', {}, {
-                  query: { method: 'GET', params: {}, isArray: true }
-              });
-          }]);
-    
-        // app.controller('MonthFinanceController', function($scope, Earnings) {
-        //     $scope.earnings = Earnings.query();
-        // });
-        
         app.controller('MonthFinanceController', function($scope, $http){
           var url = "MonthFinance/GetEarning";
-
-      $http({
-        method: 'GET',
-        url: url}).then(function (response) {
-         $scope.earnings = response.data;
-      });
-        
+          $http({
+            method: 'GET',
+            url: url}).then(function (response) {
+            $scope.earnings = response.data;
+          });
         });
- 
-        // MonthFinanceController.$inject = ['$scope', 'Earnings'];
+        
+        app.controller("LineCtrl", function ($scope) {
+
+          $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+          $scope.series = ['Ingresos', 'Gastos', 'Inversiones'];
+          $scope.data = [
+            [13000, 13000, 20000, 18000, 22000, 13000, 13000],
+            [3000, 3000, 3000, 9000, 3000, 5000, 7000],
+            [3000, 5000, 8000, 12000, 16000, 18000, 12000]
+          ];
+          $scope.onClick = function (points, evt) {
+            console.log(points, evt);
+          };
+      });
  
     })();
   </script>
   
 }
-
-
-<!--<div ng-controller="TodoListController as todoList">
-      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-      [ <a href="" ng-click="todoList.archive()">archive</a> ]
-      <ul class="unstyled">
-        <li ng-repeat="todo in todoList.todos">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
-          </label>
-        </li>
-      </ul>
-      <form ng-submit="todoList.addTodo()">
-        <input type="text" ng-model="todoList.todoText"  size="30"
-               placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
-      </form>
-    </div>-->
