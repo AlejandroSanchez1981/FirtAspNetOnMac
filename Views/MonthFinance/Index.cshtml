@@ -29,6 +29,22 @@
       <div class="panel panel-success">
         <div class="panel-heading">Dents</div>
           <div class="panel-body">
+              <div ng-controller="DataDebtController">
+                <table>
+                  <thead>
+                      <tr>
+                          <th>Description</th>
+                          <th>How much?</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="earning in earnings">
+                              <td>{{dents.Name}}</td>
+                              <td>{{dents.HowMuch}}</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
           </div>
       </div>
     </div>
