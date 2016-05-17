@@ -1,64 +1,10 @@
-@model firstaspnet.Models.EarningModel
 <div class="row">
-  @using (Html.BeginForm("Save", "MonthFinance", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-  {
-    <div class="col-md-4 col-xs-12">
-      <div class="panel panel-primary">
-      <div class="panel-heading">Earning</div>
-        <div class="panel-body">
-          <div ng-controller="MonthFinanceController">
-              <table>
-                  <thead>
-                      <tr>
-                          <th>Description</th>
-                          <th>How much?</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr ng-repeat="earning in earnings">
-                              <td>{{earning.Name}}</td>
-                              <td>{{earning.HowMuch}}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>  
-    </div>            
-    <div class="col-md-4 col-xs-12">
-      <div class="panel panel-success">
-        <div class="panel-heading">Dents</div>
-          <div class="panel-body">
-              <div ng-controller="DataDebtController">
-                <table>
-                  <thead>
-                      <tr>
-                          <th>Description</th>
-                          <th>How much?</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr ng-repeat="earning in earnings">
-                              <td>{{dents.Name}}</td>
-                              <td>{{dents.HowMuch}}</td>
-                      </tr>
-                  </tbody>
-                </table>
-              </div>
-          </div>
-      </div>
-    </div>
-    <div  class="col-md-4 col-xs-12">
-      <div class="panel panel-info">
-        <div class="panel-heading">Inversiones</div>
-        <div class="panel-body">
-          This page is temporarily disabled by the site administrator for some reason.<br> 
-          <a href="#">Click here</a> to enable the page.
-        </div>
-      </div>
-    </div>            
-  }
+  <div ng-view></div>
 </div>
+    
+                
+    
+    
 <div class="row" ng-controller="LineCtrl">
   <div class="panel">
     <div class="panel-body">
@@ -70,38 +16,3 @@
   </div>
 </div>
 
-@section scripts{
-  <script>
-     (function () 
-     {
-       
-        var app = angular.module('app', ['ngRoute','chart.js']);
-        var earningServices = angular.module('earningServices', ['ngResource']);
- 
-        app.controller('MonthFinanceController', function($scope, $http){
-          var url = "MonthFinance/GetEarning";
-          $http({
-            method: 'GET',
-            url: url}).then(function (response) {
-            $scope.earnings = response.data;
-          });
-        });
-        
-        app.controller("LineCtrl", function ($scope) {
-
-          $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-          $scope.series = ['Ingresos', 'Gastos', 'Inversiones'];
-          $scope.data = [
-            [13000, 13000, 20000, 18000, 22000, 13000, 13000],
-            [3000, 3000, 3000, 9000, 3000, 5000, 7000],
-            [3000, 5000, 8000, 12000, 16000, 18000, 12000]
-          ];
-          $scope.onClick = function (points, evt) {
-            console.log(points, evt);
-          };
-      });
- 
-    })();
-  </script>
-  
-}

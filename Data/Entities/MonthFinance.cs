@@ -17,11 +17,11 @@ namespace firstaspnet.Entities
         public double SubTotalEarning { get; set; }
         public double Total { get; set; }
         
-        public MonthFinance(string name, Expense monthExpensiveLast, Earning monthEarningLast, double saving)
+        public MonthFinance(string name, Expense monthExpensiveLast, double saving)
         {
             this.Name = name;
             this.MonthExpensive = monthExpensiveLast;
-            this.MonthEarning = monthEarningLast;
+            //this.MonthEarning = monthEarningLast;
             this.Saving = saving;
         }
     }
@@ -37,12 +37,12 @@ namespace firstaspnet.Entities
             var monthFinance = new MonthFinance(
                model.Name,
                model.ExpenseModel.ToModelToEntity(),
-               model.EarningModel.ToModelToEntity(),
+               //model.EarningModel.ToModelToEntity(),
                model.Saving
             );
             
             monthFinance.SubTotalEarning = model.ExpenseModel.SumExpense();
-            monthFinance.SubTotalExpense = model.EarningModel.SumEarning();
+            //monthFinance.SubTotalExpense = model.EarningModel.SumEarning();
             monthFinance.Total = monthFinance.SubTotalEarning + monthFinance.SubTotalExpense; 
             
             return monthFinance;

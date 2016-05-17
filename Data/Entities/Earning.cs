@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using firstaspnet.Models;
-using firstaspnet.Models;
 
 namespace firstaspnet.Data.Entities
 {
     public class Earning
     {
-        public List<Item> ListItemsEarning { get; set; }
+        public IEnumerable<Item> ListItemsEarning { get; set; }
     }
     public static class EarningModelExtensions
     {

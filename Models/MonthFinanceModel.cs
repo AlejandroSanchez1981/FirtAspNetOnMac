@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
 using firstaspnet.Entities;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace firstaspnet.Models
 {
@@ -8,7 +10,7 @@ namespace firstaspnet.Models
     {
         public string Name { get; set; }
         public ExpensesModel ExpenseModel { get; set; }
-        public EarningModel EarningModel { get; set; }
+        public IEnumerable<ItemModel> EarningModels { get; set; }
         public double Saving { get; set; }
         public MonthFinanceModel()
         {
@@ -22,7 +24,8 @@ namespace firstaspnet.Models
         {
             var monthFinanceModel = new MonthFinanceModel {
                 Name = monthFinance.Name,
-                Saving = monthFinance.Saving
+                Saving = monthFinance.Saving,
+                EarningModels = monthFinance.MonthEarning.ListItemsEarning.Select(x=>x.ToEntityModel())
             };
             return monthFinanceModel;
         }

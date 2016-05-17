@@ -3,7 +3,7 @@ using firstaspnet.Models;
 using Microsoft.AspNet.Mvc;
 using firstaspnet.Data.Entities;
 using Microsoft.AspNet.Http.Internal;
-using firstaspnet.Models;
+
 
 namespace firstaspnet.Controllers
 {

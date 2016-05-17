@@ -24,6 +24,11 @@ namespace firstaspnet.Controllers
             return View("Index");
         }
         
+        public ActionResult ListCurrentMonth()
+        {
+            return PartialView("partials/listcurrentmonth");
+        } 
+        
         // GET: api/values
         [HttpGet]
         public IEnumerable<ItemModel> GetEarning()
@@ -33,7 +38,10 @@ namespace firstaspnet.Controllers
             };
         }
         
-        public async Task<ActionResult> GetDocument()
+        
+        //GetDocument
+        [HttpGet]
+        public async Task<MonthFinanceModel> GetDocument()
         {
             
             var model = new MonthFinanceModel();
@@ -43,40 +51,40 @@ namespace firstaspnet.Controllers
             model = entity.Where(x => x.Id.Equals(Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e"))).Select(x => x.ToMonthFinanceModel()).FirstOrDefault()
 									?? entity.Where(x => x.IsDefault).Select(x => x.ToMonthFinanceModel()).FirstOrDefault();
             
-            return View(model);
+            return model;
         }
         
         
         
-        public bool Save(MonthFinanceModel model)
-        {
-            model = new MonthFinanceModel();
+        // public bool Save(MonthFinanceModel model)
+        // {
+        //     model = new MonthFinanceModel();
             
-            var earningModel = new EarningModel {ListItemsEarningModel = new List<ItemModel>{
-                new ItemModel{Name = "Salary", HowMuch = 5000}
-            }};
+        //     var earningModel = new EarningModel {ListItemsEarningModel = new List<ItemModel>{
+        //         new ItemModel{Name = "Salary", HowMuch = 5000}
+        //     }};
             
-            var expenseModel = new ExpensesModel{ListItemsExpenseModel = new List<ItemModel>{
-              new ItemModel {Name = "Rent House Dublin", HowMuch = 2500}  
-            }};
+        //     var expenseModel = new ExpensesModel{ListItemsExpenseModel = new List<ItemModel>{
+        //       new ItemModel {Name = "Rent House Dublin", HowMuch = 2500}  
+        //     }};
             
-            var monthFinanceEntity = new MonthFinanceModel{
-                ExpenseModel = expenseModel,
-                EarningModel = earningModel,
-                Saving = 1000
-            };
+        //     var monthFinanceEntity = new MonthFinanceModel{
+        //         ExpenseModel = expenseModel,
+        //         EarningModel = earningModel,
+        //         Saving = 1000
+        //     };
             
-            var entity = monthFinanceEntity.ToModelToEntity();
+        //     var entity = monthFinanceEntity.ToModelToEntity();
             
-            entity.SubTotalEarning = 5000;
-            entity.SubTotalExpense = 2500;
-            entity.Id = Guid.NewGuid();
-            //entity.Id = Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e");
+        //     entity.SubTotalEarning = 5000;
+        //     entity.SubTotalExpense = 2500;
+        //     entity.Id = Guid.NewGuid();
+        //     //entity.Id = Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e");
             
             
-            monthFinanceConfPer.Persist(entity);
+        //     monthFinanceConfPer.Persist(entity);
             
-            return true;
-        }
+        //     return true;
+        // }
     }
 }

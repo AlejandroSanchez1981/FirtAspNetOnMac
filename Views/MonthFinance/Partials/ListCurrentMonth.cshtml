@@ -1,0 +1,61 @@
+  <div ng-controller="MonthFinanceController as monthfinance">
+      <div class="col-md-4 col-xs-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Earning</div>
+            <div class="panel-body">
+              <div>
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Description</th>
+                              <th>How much?</th>
+                              <th><a href="#/new"><i class="glyphicon glyphicon-plus"></i></a></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="earning in monthFinances.EarningModels">
+                                  <td><input type="text" name="select_{{$index}}" ng-model="earning.Name"></td>
+                                  <td><input type="text" aria-labelledby="select_{{$index}}" ng-model="earning.HowMuch"></td>
+                                  <td><a><i class="glyphicon glyphicon-pencil"></i></a></td>
+                          </tr>
+                          <tr><button ng-click="addEarning()">add</button></tr>
+                          <tr><button ng-click="save()">add</button></tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>  
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="panel panel-success">
+        <div class="panel-heading">Dents</div>
+          <div class="panel-body">
+              <div>
+                <table>
+                  <thead>
+                      <tr>
+                          <th>Description</th>
+                          <th>How much?</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="earning in earnings">
+                              <td>{{monthfinance.dents.Name}}</td>
+                              <td>{{monthfinance.dents.HowMuch}}</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+    </div>
+      <div  class="col-md-4 col-xs-12">
+        <div class="panel panel-info">
+          <div class="panel-heading">Inversiones</div>
+          <div class="panel-body">
+            This page is temporarily disabled by the site administrator for some reason.<br> 
+            <a href="#">Click here</a> to enable the page.
+        </div>
+      </div>
+      </div>            
+   </div>
