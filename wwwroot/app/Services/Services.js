@@ -10,6 +10,19 @@ function(){
             });  
          
     }
+    
+    this.SaveMonthFinance = function($http, monthFinances)
+    {
+        var url = "MonthFinance/SaveMonthFinance/";
+       
+        return $http.post(url, monthFinances)
+            .success(function (data, status, headers, config) {
+
+            }).error(function (data, status, headers, config) {
+
+            });
+        
+    }
 });
 
 

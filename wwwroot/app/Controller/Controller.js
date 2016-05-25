@@ -10,9 +10,28 @@ angular.module('app').controller('MonthFinanceController',
                 })
                 
                 $scope.addEarning = function() {
-                    $scope.monthFinances.EarningModels.push({Name: '', HowMuch: ''});
+                    $scope.monthFinances.Earning.push({Name: '', HowMuch: ''});
                 };
+                
+                $scope.save = function()
+                {
+                  monthFinanceListService.SaveMonthFinance($http, $scope.monthFinances);
+                }
             });
+ 
+ 
+ angular.module('app').controller("LineCtrl", function ($scope) {  
+            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+            $scope.series = ['Ingresos', 'Gastos', 'Inversiones'];
+            $scope.data = [
+              [13000, 13000, 20000, 18000, 22000, 13000, 13000],
+              [3000, 3000, 3000, 9000, 3000, 5000, 7000],
+            [3000, 5000, 8000, 12000, 16000, 18000, 12000]
+            ];
+          $scope.onClick = function (points, evt) {
+            console.log(points, evt);
+          };
+      });
 
 
 /*
@@ -67,18 +86,6 @@ SettingsController1.prototype.clearContact = function(contact) {
 
 
 
-          angular.module('app').controller("LineCtrl", function ($scope) {  
-            $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-            $scope.series = ['Ingresos', 'Gastos', 'Inversiones'];
-            $scope.data = [
-              [13000, 13000, 20000, 18000, 22000, 13000, 13000],
-              [3000, 3000, 3000, 9000, 3000, 5000, 7000],
-            [3000, 5000, 8000, 12000, 16000, 18000, 12000]
-            ];
-          $scope.onClick = function (points, evt) {
-            console.log(points, evt);
-          };
-      });
 
     
     

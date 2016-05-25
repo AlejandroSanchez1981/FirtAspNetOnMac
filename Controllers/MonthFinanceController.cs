@@ -38,6 +38,15 @@ namespace firstaspnet.Controllers
             };
         }
         
+        [HttpPost]
+        public bool SaveMonthFinance([FromBody] MonthFinanceModel monthFinances)
+        {
+            var entity = monthFinances.ToModelToEntity();
+            entity.Id = Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e");
+            monthFinanceConfPer.Persist(entity);
+            
+            return true;
+        }
         
         //GetDocument
         [HttpGet]
@@ -47,6 +56,8 @@ namespace firstaspnet.Controllers
             var model = new MonthFinanceModel();
             var entity = (await monthFinanceConfPer.Get()).ToArray();
             
+            
+            //todo: remove guid hardcore
             
             model = entity.Where(x => x.Id.Equals(Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e"))).Select(x => x.ToMonthFinanceModel()).FirstOrDefault()
 									?? entity.Where(x => x.IsDefault).Select(x => x.ToMonthFinanceModel()).FirstOrDefault();

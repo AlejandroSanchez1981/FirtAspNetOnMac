@@ -13,7 +13,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr ng-repeat="earning in monthFinances.EarningModels">
+                          <tr ng-repeat="earning in monthFinances.Earning">
                                   <td><input type="text" name="select_{{$index}}" ng-model="earning.Name"></td>
                                   <td><input type="text" aria-labelledby="select_{{$index}}" ng-model="earning.HowMuch"></td>
                                   <td><a><i class="glyphicon glyphicon-pencil"></i></a></td>

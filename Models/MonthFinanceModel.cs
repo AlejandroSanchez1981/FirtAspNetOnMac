@@ -9,24 +9,26 @@ namespace firstaspnet.Models
     public class MonthFinanceModel
     {
         public string Name { get; set; }
-        public ExpensesModel ExpenseModel { get; set; }
-        public IEnumerable<ItemModel> EarningModels { get; set; }
+        public ExpensesModel Expense { get; set; }
+        public EarningModel Earning { get; set; }
         public double Saving { get; set; }
         public MonthFinanceModel()
         {
-            Name = DateTime.Now.ToMonthName() + DateTime.Now.Year.ToString();
+             Name = DateTime.Now.ToMonthName() + DateTime.Now.Year.ToString();
+             Earning = new EarningModel();
+             Expense = new ExpensesModel();
         }
     }
 
     public static class MonthFinanceExtensions
     {
-        public static MonthFinanceModel ToMonthFinanceModel(this MonthFinance monthFinance)
+        public static MonthFinanceModel ToMonthFinanceModel(this MonthFinance source)
         {
             var monthFinanceModel = new MonthFinanceModel {
-                Name = monthFinance.Name,
-                Saving = monthFinance.Saving,
-                EarningModels = monthFinance.MonthEarning.ListItemsEarning.Select(x=>x.ToEntityModel())
+                Name = source.Name,
+                Saving = source.Saving
             };
+            monthFinanceModel.Earning.ListItemsEarningModel = source.MonthEarning.ListItemsEarning.Select(x => x.ToEntityModel());
             return monthFinanceModel;
         }
     }

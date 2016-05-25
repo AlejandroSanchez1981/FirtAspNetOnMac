@@ -30,7 +30,8 @@ namespace firstaspnet.Models
             }
             return new ItemModel
             {
-              Name = source.Name  
+              Name = source.Name,
+              HowMuch = source.HowMuch
             };
         }
     }

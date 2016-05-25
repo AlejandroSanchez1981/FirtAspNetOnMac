@@ -13,7 +13,7 @@ namespace firstaspnet.Data.Entities
         public static Earning ToModelToEntity(this EarningModel model)
         {
             var earning = new Earning{
-               ListItemsEarning = model.ListItemsEarningModel.Select(x => x.ModelToEntity()).ToList()
+               ListItemsEarning = model.ListItemsEarningModel.Select(x => x.ModelToEntity())
             };
      
             return earning;
