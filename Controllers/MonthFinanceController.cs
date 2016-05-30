@@ -6,7 +6,7 @@ using firstaspnet.Data.DbContext;
 using firstaspnet.Data.DbContext.Interfaces;
 using firstaspnet.Entities;
 using firstaspnet.Models;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace firstaspnet.Controllers
 {
@@ -21,7 +21,7 @@ namespace firstaspnet.Controllers
         
         public ActionResult Index()
         {
-            return View("Index");
+            return View();
         }
         
         public ActionResult ListCurrentMonth()

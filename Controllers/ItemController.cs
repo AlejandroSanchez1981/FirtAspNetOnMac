@@ -1,9 +1,9 @@
 using firstaspnet.Interfaces.ioc;
 using firstaspnet.Models;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using firstaspnet.Data.Entities;
-using Microsoft.AspNet.Http.Internal;
-
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Http;
 
 namespace firstaspnet.Controllers
 {

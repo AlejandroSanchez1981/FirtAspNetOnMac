@@ -3,8 +3,10 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using firstaspnet.Data.DbContext.Interfaces;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+      
 
 namespace firstasnet.Data.DbContext
 {
@@ -48,7 +50,7 @@ namespace firstasnet.Data.DbContext
 			var serializationStream = new MemoryStream();
 			try
 			{
-				var blobref = container.GetBlobReferenceFromServer(blobAddressUri);
+				var blobref = container.GetBlockBlobReference(blobAddressUri);
 				await blobref.DownloadToStreamAsync(serializationStream);
 			}
 			catch (StorageException e)
@@ -79,7 +81,7 @@ namespace firstasnet.Data.DbContext
 			var blobStorageType = Account.CreateCloudBlobClient();
 			var container = blobStorageType.GetContainerReference(DocumentsContainerName);
 
-			return container.GetBlobReferenceFromServer(documentName).DeleteIfExistsAsync();
+			return container.GetBlockBlobReference(documentName).DeleteIfExistsAsync();
 		}
 	}
 }

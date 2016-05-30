@@ -5,7 +5,7 @@ using firstaspnet.Entities;
 using firstaspnet.Models;
 using firstaspnet.Test.ContextMock;
 using firstaspnet.Controllers;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
 namespace firstaspnet.Test
