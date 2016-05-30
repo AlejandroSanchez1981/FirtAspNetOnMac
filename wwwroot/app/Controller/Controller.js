@@ -10,7 +10,7 @@ angular.module('app').controller('MonthFinanceController',
                 })
                 
                 $scope.addEarning = function() {
-                    $scope.monthFinances.Earning.push({Name: '', HowMuch: ''});
+                    $scope.monthFinances.Earning.ListItemsEarningModel.push({Name: '', HowMuch: ''});
                 };
                 
                 $scope.save = function()

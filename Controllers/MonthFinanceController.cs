@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using firstaspnet.Data.DbContext;
 using firstaspnet.Data.DbContext.Interfaces;
+using firstaspnet.Data.Entities;
 using firstaspnet.Entities;
 using firstaspnet.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +42,24 @@ namespace firstaspnet.Controllers
         [HttpPost]
         public bool SaveMonthFinance([FromBody] MonthFinanceModel monthFinances)
         {
-            var entity = monthFinances.ToModelToEntity();
+            //var entity = monthFinances.ToModelToEntity();
+            
+            var entityExpense = new Expense {
+                ListItemsExpense = monthFinances.Expense.ListItemsExpenseModel.Select(x=>x.ModelToEntity())
+            };
+            
+            var entityEarning = new Earning
+            {
+                ListItemsEarning = monthFinances.Earning.ListItemsEarningModel.Select(x=>x.ModelToEntity())
+            };
+            
+            var entity = new MonthFinance
+            {
+               Name = monthFinances.Name,
+               MonthExpensive = entityExpense,
+               MonthEarning = entityEarning 
+            };
+            
             entity.Id = Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e");
             monthFinanceConfPer.Persist(entity);
             

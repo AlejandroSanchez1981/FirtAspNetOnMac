@@ -12,7 +12,7 @@ function(){
     }
     
     this.SaveMonthFinance = function($http, monthFinances)
-    {
+    {                           
         var url = "MonthFinance/SaveMonthFinance/";
        
         return $http.post(url, monthFinances)
