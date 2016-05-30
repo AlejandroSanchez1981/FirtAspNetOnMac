@@ -12,6 +12,14 @@ angular.module('app').controller('MonthFinanceController',
                 $scope.addEarning = function() {
                     $scope.monthFinances.Earning.ListItemsEarningModel.push({Name: '', HowMuch: ''});
                 };
+                $scope.addExpense = function()
+                {
+                    $scope.monthFinances.Expense.ListItemsExpenseModel.push({Name: '', HowMuch: ''});
+                }
+                $scope.addInvestment = function()
+                {
+                    $scope.monthFinances.Investment.ListItemsInvestmentModel.push({Name: '', HowMuch: ''});
+                }
                 
                 $scope.save = function()
                 {

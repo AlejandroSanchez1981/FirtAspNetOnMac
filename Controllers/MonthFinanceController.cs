@@ -53,11 +53,17 @@ namespace firstaspnet.Controllers
                 ListItemsEarning = monthFinances.Earning.ListItemsEarningModel.Select(x=>x.ModelToEntity())
             };
             
+            var entityInvestment = new Investment
+            {
+              ListItemsInvestment = monthFinances.Investment.ListItemsInvestmentModel.Select(x=>x.ModelToEntity())  
+            };
+            
             var entity = new MonthFinance
             {
                Name = monthFinances.Name,
-               MonthExpensive = entityExpense,
-               MonthEarning = entityEarning 
+               MonthExpense = entityExpense,
+               MonthEarning = entityEarning,
+               MonthInvestment = entityInvestment 
             };
             
             entity.Id = Guid.Parse("efede5a3-0b4c-4d41-a054-55d1b97ae35e");
