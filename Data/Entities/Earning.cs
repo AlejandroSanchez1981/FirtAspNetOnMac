@@ -1,20 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using firstaspnet.Models;
-using firstaspnet.Models;
 
 namespace firstaspnet.Data.Entities
 {
     public class Earning
     {
-        public List<Item> ListItemsEarning { get; set; }
+        public IEnumerable<Item> ListItemsEarning { get; set; }
     }
     public static class EarningModelExtensions
     {
         public static Earning ToModelToEntity(this EarningModel model)
         {
             var earning = new Earning{
-               ListItemsEarning = model.ListItemsEarningModel.Select(x => x.ModelToEntity()).ToList()
+               ListItemsEarning = model.ListItemsEarningModel.Select(x => x.ModelToEntity())
             };
      
             return earning;

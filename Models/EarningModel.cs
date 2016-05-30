@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using firstaspnet.Data.Entities;
 
 namespace firstaspnet.Models
 {
     public class EarningModel
     {
-        public List<ItemModel> ListItemsEarningModel { get; set; }
-    }    
+        public IEnumerable<ItemModel> ListItemsEarningModel { get; set; }
+    } 
 }
 
 

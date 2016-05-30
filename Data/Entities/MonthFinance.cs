@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using firstaspnet.Data.Entities;
 using firstaspnet.Models;
 
@@ -12,16 +14,15 @@ namespace firstaspnet.Entities
         public string Name { get; set; }
         public Expense MonthExpensive { get; set; }
         public Earning MonthEarning { get; set; }
-        public double Saving { get; set; }
-        public double SubTotalExpense  { get; set; }
-        public double SubTotalEarning { get; set; }
+        public double Saving { get; }
+        public double SubTotalExpense  { get; }
+        public double SubTotalEarning { get; }
         public double Total { get; set; }
         
-        public MonthFinance(string name, Expense monthExpensiveLast, Earning monthEarningLast, double saving)
+        public MonthFinance(string name, Expense monthExpensiveLast, double saving)
         {
             this.Name = name;
             this.MonthExpensive = monthExpensiveLast;
-            this.MonthEarning = monthEarningLast;
             this.Saving = saving;
         }
     }
@@ -36,13 +37,11 @@ namespace firstaspnet.Entities
                 
             var monthFinance = new MonthFinance(
                model.Name,
-               model.ExpenseModel.ToModelToEntity(),
-               model.EarningModel.ToModelToEntity(),
+               model.Expense.ToModelToEntity(),
                model.Saving
             );
             
-            monthFinance.SubTotalEarning = model.ExpenseModel.SumExpense();
-            monthFinance.SubTotalExpense = model.EarningModel.SumEarning();
+            monthFinance.MonthEarning.ListItemsEarning = model.Earning.ToModelToEntity().ListItemsEarning;
             monthFinance.Total = monthFinance.SubTotalEarning + monthFinance.SubTotalExpense; 
             
             return monthFinance;

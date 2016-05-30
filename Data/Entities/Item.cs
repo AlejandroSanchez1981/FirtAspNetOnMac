@@ -1,7 +1,7 @@
 using System;
 using firstaspnet.Models;
 using firstaspnet.Interfaces.ioc;
-using firstaspnet.Models;
+
 
 namespace firstaspnet.Data.Entities
 {
@@ -10,12 +10,6 @@ namespace firstaspnet.Data.Entities
         public string Name {get; set;}
         public double HowMuch { get; set; }
         
-        public Item GiveItem()
-        {
-            return new Item { Name = "Alf" };
-        }
-
-       
     }
     
     public static class ItemModelExtensions

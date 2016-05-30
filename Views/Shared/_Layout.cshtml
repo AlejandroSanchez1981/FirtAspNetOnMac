@@ -40,6 +40,12 @@
                 </div>
             </div>
         </div>
+        <div  class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+            </footer>
+        </div>
         <environment names="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -47,13 +53,6 @@
             
             
         </environment>
-        <div  class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-            </footer>
-        </div>
-
         
         <environment names="Staging,Production">
             <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -66,13 +65,20 @@
             </script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
-            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
-            <!--<script src="~/js/Angular/finance.js"></script>-->
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+            <!--<script src="~/js/app/services/earningservices.js"></script>-->
+            <!--<script src="~/js/app/app.js"></script>
+            <script src="~/js/app/controller/monthfinancecontroller.js"></script>-->
             <script src="~/lib/chart.js/chart.js"></script>
             <script src="~/lib/angular-chart.js/dist/angular-chart.js"></script>
+            <script src="~/app/app.js"></script>
+            <script src="~/app/controller/controller.js"></script>
+            <script src="~/app/services/services.js"></script>
         </environment>
-
+        
+        
+        
         @RenderSection("scripts", required: false)
     </body>
 </html>

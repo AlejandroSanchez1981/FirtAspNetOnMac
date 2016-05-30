@@ -22,7 +22,7 @@ namespace firstaspnet.Models
     }
     public static class ItemModelExtensions
     {
-        public static ItemModel ModelToEntity(this Item source)
+        public static ItemModel ToEntityModel(this Item source)
         {
             if(source == null)
             {
@@ -30,7 +30,8 @@ namespace firstaspnet.Models
             }
             return new ItemModel
             {
-              Name = source.Name  
+              Name = source.Name,
+              HowMuch = source.HowMuch
             };
         }
     }
