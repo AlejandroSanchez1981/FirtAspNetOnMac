@@ -12,8 +12,10 @@ namespace firstaspnet.Entities
         }
         internal bool IsDefault;
         public string Name { get; set; }
-        public Expense MonthExpensive { get; set; }
+        public Expense MonthExpense { get; set; }
         public Earning MonthEarning { get; set; }
+        
+        public Investment MonthInvestment { get; set; }
         public double Saving { get; }
         public double SubTotalExpense  { get; }
         public double SubTotalEarning { get; }
@@ -22,7 +24,7 @@ namespace firstaspnet.Entities
         public MonthFinance(string name, Expense monthExpensiveLast, double saving)
         {
             this.Name = name;
-            this.MonthExpensive = monthExpensiveLast;
+            this.MonthExpense = monthExpensiveLast;
             this.Saving = saving;
         }
     }

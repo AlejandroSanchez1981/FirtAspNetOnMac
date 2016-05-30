@@ -10,7 +10,6 @@ namespace firstaspnet.Data.Entities
         public IEnumerable<Item> ListItemsExpense { get; set; }
     }
     
-    
     public static class ExpenseModelExtensions
     {
         public static Expense ToModelToEntity(this ExpensesModel model)

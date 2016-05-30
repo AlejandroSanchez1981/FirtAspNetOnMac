@@ -18,7 +18,7 @@ namespace firstaspnet.Test.ContextMock
             
             var previusMonth = new MonthFinance{
                Name = DateTime.Now.AddMonths(-1).ToMonthName() + DateTime.Now.Year.ToString(),
-                MonthExpensive = null,
+                MonthExpense = null,
                 MonthEarning = null//,
                 //Saving = 0
             };
@@ -33,7 +33,7 @@ namespace firstaspnet.Test.ContextMock
                 double subtotalEarning = 0;
                 double subtotalExpense = 0;
                 
-                foreach (var item in month.MonthExpensive.ListItemsExpense)
+                foreach (var item in month.MonthExpense.ListItemsExpense)
                 {
                     subtotalExpense += item.HowMuch;
                 }

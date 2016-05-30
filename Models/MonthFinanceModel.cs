@@ -11,12 +11,16 @@ namespace firstaspnet.Models
         public string Name { get; set; }
         public ExpensesModel Expense { get; set; }
         public EarningModel Earning { get; set; }
+        
+        public InvestmentModel Investment { get; set; }
+        
         public double Saving { get; set; }
         public MonthFinanceModel()
         {
              Name = DateTime.Now.ToMonthName() + DateTime.Now.Year.ToString();
              Earning = new EarningModel();
              Expense = new ExpensesModel();
+             Investment = new InvestmentModel();
         }
     }
 
@@ -28,7 +32,12 @@ namespace firstaspnet.Models
                 Name = source.Name,
                 Saving = source.Saving
             };
+            
+            
             monthFinanceModel.Earning.ListItemsEarningModel = source.MonthEarning.ListItemsEarning.Select(x => x.ToEntityModel());
+            monthFinanceModel.Expense.ListItemsExpenseModel = source.MonthExpense.ListItemsExpense.Select(x => x.ToEntityModel());
+            monthFinanceModel.Investment.ListItemsInvestmentModel = source.MonthInvestment.ListItemsInvestment.Select(x => x.ToEntityModel());
+            
             return monthFinanceModel;
         }
     }

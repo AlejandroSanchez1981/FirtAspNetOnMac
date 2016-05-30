@@ -27,7 +27,7 @@
       </div>  
     </div>
     <div class="col-md-4 col-xs-12">
-      <div class="panel panel-success">
+      <div class="panel panel-danger">
         <div class="panel-heading">Dents</div>
           <div class="panel-body">
               <div>
@@ -39,23 +39,41 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr ng-repeat="earning in earnings">
-                              <td>{{monthfinance.dents.Name}}</td>
-                              <td>{{monthfinance.dents.HowMuch}}</td>
-                      </tr>
+                      <tr ng-repeat="expense in monthFinances.Expense.ListItemsExpenseModel">
+                                  <td><input type="text" name="select_{{$index}}" ng-model="expense.Name"></td>
+                                  <td><input type="text" aria-labelledby="select_{{$index}}" ng-model="expense.HowMuch"></td>
+                                  <td><a><i class="glyphicon glyphicon-pencil"></i></a></td>
+                          </tr>
+                          <tr><button ng-click="addExpense()">add</button></tr>
                   </tbody>
                 </table>
               </div>
           </div>
       </div>
     </div>
-      <div  class="col-md-4 col-xs-12">
-        <div class="panel panel-info">
-          <div class="panel-heading">Inversiones</div>
+      <div class="col-md-4 col-xs-12">
+      <div class="panel panel-success">
+        <div class="panel-heading">Investment</div>
           <div class="panel-body">
-            This page is temporarily disabled by the site administrator for some reason.<br> 
-            <a href="#">Click here</a> to enable the page.
-        </div>
+              <div>
+                <table>
+                  <thead>
+                      <tr>
+                          <th>Description</th>
+                          <th>How won?</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="investment in monthFinances.Investment.ListItemsInvestmentModel">
+                                  <td><input type="text" name="select_{{$index}}" ng-model="investment.Name"></td>
+                                  <td><input type="text" aria-labelledby="select_{{$index}}" ng-model="investment.HowMuch"></td>
+                                  <td><a><i class="glyphicon glyphicon-pencil"></i></a></td>
+                          </tr>
+                          <tr><button ng-click="addInvestment()">add</button></tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
       </div>
-      </div>            
+    </div>            
    </div>
